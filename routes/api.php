@@ -36,7 +36,7 @@ Route::get('/stockitems', function () {
 Route::get('/ingredients', function (Request $request) {
    $ingredients = DB::table('ingredients')
        ->join('allergens', 'allergens.id', '=', 'ingredients.allergen_id')
-       ->select('allergens.id as allergen', 'ingredients.id as ingredientId', 'ingredients.name as ingredient')
+       ->select('allergens.name as allergen', 'ingredients.id', 'ingredients.name as ingredient')
        ->get();
 
    return response()->json($ingredients);
